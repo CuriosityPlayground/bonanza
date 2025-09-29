@@ -1074,6 +1074,7 @@
             "main",
             "master"
          ]
-      }
+      },
+      "workflow_dispatch": {}
    }
 }
