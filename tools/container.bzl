@@ -21,7 +21,7 @@ def multiarch_go_image(name, binary):
 
     oci_image(
         name = image_target,
-        base = Label("@distroless_static"),
+        base = "@bonanza_distroless_static",
         entrypoint = ["/app/{}".format(native.package_relative_label(binary).name)],
         tars = [tar_target],
         # Don't build un-transitioned images, as the default target architecture might be unsupported

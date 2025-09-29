@@ -978,11 +978,54 @@
     "@@rules_oci+//oci:extensions.bzl%oci": {
       "general": {
         "bzlTransitiveDigest": "UG6/u9Dl5qNozcG8E6ehAcOG2nhh8rw191ishRnBR24=",
-        "usagesDigest": "Rftxb6ZSYiMZlrVCqxXmobFg1BuNPPF1zG5Rw4fbsVg=",
+        "usagesDigest": "dzLf+cZT9IQZJYnQFdtSRZMz+FxD1aeRSgeLyxV/+4w=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
         "generatedRepoSpecs": {
+          "bonanza_distroless_static_linux_amd64": {
+            "repoRuleId": "@@rules_oci+//oci/private:pull.bzl%oci_pull",
+            "attributes": {
+              "www_authenticate_challenges": {},
+              "scheme": "https",
+              "registry": "gcr.io",
+              "repository": "distroless/static",
+              "identifier": "sha256:3f2b64ef97bd285e36132c684e6b2ae8f2723293d09aae046196cca64251acac",
+              "platform": "linux/amd64",
+              "target_name": "bonanza_distroless_static_linux_amd64",
+              "bazel_tags": []
+            }
+          },
+          "bonanza_distroless_static_linux_arm64_v8": {
+            "repoRuleId": "@@rules_oci+//oci/private:pull.bzl%oci_pull",
+            "attributes": {
+              "www_authenticate_challenges": {},
+              "scheme": "https",
+              "registry": "gcr.io",
+              "repository": "distroless/static",
+              "identifier": "sha256:3f2b64ef97bd285e36132c684e6b2ae8f2723293d09aae046196cca64251acac",
+              "platform": "linux/arm64/v8",
+              "target_name": "bonanza_distroless_static_linux_arm64_v8",
+              "bazel_tags": []
+            }
+          },
+          "bonanza_distroless_static": {
+            "repoRuleId": "@@rules_oci+//oci/private:pull.bzl%oci_alias",
+            "attributes": {
+              "target_name": "bonanza_distroless_static",
+              "www_authenticate_challenges": {},
+              "scheme": "https",
+              "registry": "gcr.io",
+              "repository": "distroless/static",
+              "identifier": "sha256:3f2b64ef97bd285e36132c684e6b2ae8f2723293d09aae046196cca64251acac",
+              "platforms": {
+                "@@platforms//cpu:x86_64": "@bonanza_distroless_static_linux_amd64",
+                "@@platforms//cpu:arm64": "@bonanza_distroless_static_linux_arm64_v8"
+              },
+              "bzlmod_repository": "bonanza_distroless_static",
+              "reproducible": true
+            }
+          },
           "busybox_linux_amd64": {
             "repoRuleId": "@@rules_oci+//oci/private:pull.bzl%oci_pull",
             "attributes": {
@@ -1184,7 +1227,11 @@
           }
         },
         "moduleExtensionMetadata": {
-          "explicitRootModuleDirectDeps": [],
+          "explicitRootModuleDirectDeps": [
+            "bonanza_distroless_static",
+            "bonanza_distroless_static_linux_amd64",
+            "bonanza_distroless_static_linux_arm64_v8"
+          ],
           "explicitRootModuleDirectDevDeps": [],
           "useAllRepos": "NO",
           "reproducible": false

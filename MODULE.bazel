@@ -145,7 +145,16 @@ llvm.toolchain(
 use_repo(llvm, "llvm_toolchain_llvm")
 
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
-use_repo(oci, "distroless_static")
+oci.pull(
+    name = "bonanza_distroless_static",
+    digest = "sha256:3f2b64ef97bd285e36132c684e6b2ae8f2723293d09aae046196cca64251acac",
+    image = "gcr.io/distroless/static",
+    platforms = [
+        "linux/amd64",
+        "linux/arm64/v8",
+    ],
+)
+use_repo(oci, "bonanza_distroless_static", "bonanza_distroless_static_linux_amd64", "bonanza_distroless_static_linux_arm64_v8")
 
 npm = use_extension("@aspect_rules_js//npm:extensions.bzl", "npm")
 npm.npm_translate_lock(
