@@ -44,14 +44,14 @@ def multiarch_go_image(name, binary):
     )
 
 def container_push_official(name, image, component):
-    """Push container image to ghcr.io/CuriosityPlayground/
+    """Push container image to ghcr.io/curiosityplayground/
 
     This is a local override of the bb_storage version to use a different registry.
     """
     oci_push(
         name = name,
         image = image,
-        repository = "ghcr.io/CuriosityPlayground/" + component,
+        repository = "ghcr.io/curiosityplayground/" + component,
         remote_tags = "@com_github_buildbarn_bb_storage//tools:stamped_tags",
         target_compatible_with = select({
             Label("@platforms//os:windows"): [Label("@platforms//:incompatible")],
